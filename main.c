@@ -19,6 +19,7 @@ int main(int argc, char *argv[])
     (void)argc;
     cmd.cmd = NULL;
     cmd.av = NULL;
+    cmd.name = argv[0];
     while(1)
     {
         if (isatty(STDIN_FILENO))
@@ -31,15 +32,13 @@ int main(int argc, char *argv[])
             exit(EXIT_SUCCESS);
         }
         cmd.cmd[nread - 1] = '\0';
-        cmd.av = malloc(2 * sizeof(char *));
-        cmd.av[0] = strdup(cmd.cmd);
-        cmd.av[1] = NULL;
+       _split(&cmd);
         child_pid = fork();
         if(child_pid == 0)
         {
             if(execve(cmd.cmd, cmd.av, NULL) == -1)
             {
-                perror(argv[0]);
+                perror(cmd.name);
                 free(cmd.cmd);
                 free_arry(cmd.av);
                 exit(1);
