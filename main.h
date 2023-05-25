@@ -22,5 +22,6 @@ typedef struct cmd_t
 
 
 void free_arry(char **ar);
+void my_printf(const char *str);
 
 #endif
