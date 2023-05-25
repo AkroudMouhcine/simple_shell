@@ -24,23 +24,25 @@ int main(int argc, char *argv[])
 			my_printf("#cisfun$ ");
 		get_cmd(&cmd);
 		_split(&cmd);
-		is_exit(&cmd, exitstatus);
-		if (strlen(cmd.cmd) != 0)
+		if (!built_in(&cmd, exitstatus))
 		{
-			child_pid = fork();
-			if (child_pid == 0)
+			if (strlen(cmd.cmd) != 0)
 			{
-				if (execve(cmd.av[0], cmd.av, NULL) == -1)
+				child_pid = fork();
+				if (child_pid == 0)
 				{
-					perror(cmd.name);
-					free(cmd.cmd);
-					free_arry(cmd.av);
-					exit(1);
+					if (execve(cmd.av[0], cmd.av, NULL) == -1)
+					{
+						perror(cmd.name);
+						free(cmd.cmd);
+						free_arry(cmd.av);
+						exit(1);
+					}
 				}
+				wait(&status);
+				if (WIFEXITED(status))
+					exitstatus = WEXITSTATUS(status);
 			}
-			wait(&status);
-			if (WIFEXITED(status))
-				exitstatus = WEXITSTATUS(status);
 		}
 		free(cmd.cmd);
 		free_arry(cmd.av);

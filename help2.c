@@ -1,13 +1,13 @@
 #include "main.h"
 
 /**
- * is_exit - exit.
+ * built_in - built in functions.
  * @cmd: input cmd_t.
  * @exitstatus: input int.
  *
- * Return: void
+ * Return: int
  */
-void is_exit(cmd_t *cmd, int exitstatus)
+int built_in(cmd_t *cmd, int exitstatus)
 {
 	if (!strcmp(cmd->av[0], "exit"))
 	{
@@ -20,7 +20,10 @@ void is_exit(cmd_t *cmd, int exitstatus)
 		exit(exitstatus);
 	}
 	if (!strcmp(cmd->av[0], "env"))
+	{
 		print_env();
+	}
+	return (1);
 }
 
 

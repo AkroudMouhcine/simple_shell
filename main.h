@@ -31,7 +31,7 @@ void _split(cmd_t *cmd);
 void remove_spaces(char *s);
 void cmd_init(cmd_t *cmd, char *name);
 void get_cmd(cmd_t *cmd);
-void is_exit(cmd_t *cmd, int exitstatus);
+int built_in(cmd_t *cmd, int exitstatus);
 void print_env(void);
 
 #endif
