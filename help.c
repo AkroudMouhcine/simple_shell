@@ -40,6 +40,7 @@ void _split(cmd_t *cmd)
     }
     cmd->av[0] = NULL;
     cmd->av[1] = NULL;
+    remove_spaces(cmd->cmd);
     tkn = strtok(cmd->cmd, " ");
     while (tkn)
     {
@@ -63,4 +64,20 @@ void _split(cmd_t *cmd)
         tkn = strtok(NULL, " ");
     }
     cmd->av[ntkn] = NULL;
+}
+
+void remove_spaces(char *s)
+{
+    int i, j, len = strlen(s);
+
+    for(i = 0; i < len && s[i] == ' '; i++)
+        ;
+    for(j = 0; i < len; j++)
+    {
+        s[j] = s[i];
+        i++;
+    }
+    s[j] = '\0';
+    for (i = strlen(s) - 1 ; i > 0 &&  s[i] == ' '; i--)
+         s[i] = '\0';
 }
