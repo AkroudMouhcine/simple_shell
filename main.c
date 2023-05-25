@@ -21,12 +21,12 @@ int main(int argc, char *argv[])
     cmd.av = NULL;
     while(1)
     {
-        printf("#cisfun$ ");
+        my_printf("#cisfun$ ");
         n = 0;
         nread = getline(&cmd.cmd, &n, stdin);
         if (nread == -1)
         {
-            printf("\n");
+            my_printf("\n");
             free(cmd.cmd);
             exit(1);
         }
