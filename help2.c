@@ -15,8 +15,9 @@ int built_in(cmd_t *cmd, int exitstatus)
 	} else if (!strcmp(cmd->av[0], "env"))
 	{
 		print_env();
+		return (1);
 	}
-	return (1);
+	return (0);
 }
 
 
