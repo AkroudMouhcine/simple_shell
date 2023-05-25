@@ -10,9 +10,10 @@
 #include <stddef.h>
 
 /**
- * cmd_t - data stracut.
+ * struct cmd_t - data stracut.
  * @av: input arrays od string.
  * @cmd: input string.
+ * @name: input string.
  */
 typedef struct cmd_t
 {
