@@ -16,6 +16,7 @@ void is_exit(cmd_t *cmd, int exitstatus)
 		if (exitstatus == -1 && !cmd->av[1])
 			exitstatus = EXIT_SUCCESS;
 		free(cmd->cmd);
+		free_arry(cmd->av);
 		exit(exitstatus);
 	}
 }
