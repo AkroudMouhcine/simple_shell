@@ -11,15 +11,8 @@ int built_in(cmd_t *cmd, int exitstatus)
 {
 	if (!strcmp(cmd->av[0], "exit"))
 	{
-		if (cmd->av[1])
-			exitstatus = atoi(cmd->av[1]);
-		if (exitstatus == -1 && !cmd->av[1])
-			exitstatus = EXIT_SUCCESS;
-		free(cmd->cmd);
-		free_arry(cmd->av);
-		exit(exitstatus);
-	}
-	if (!strcmp(cmd->av[0], "env"))
+		my_exit(cmd, exitstatus);
+	} else if (!strcmp(cmd->av[0], "env"))
 	{
 		print_env();
 	}
@@ -63,3 +56,20 @@ void print_env(void)
 	}
 }
 
+
+
+/**
+ * my_exit - exit
+ *
+ * Return: void
+ */
+void my_exit(cmd_t *cmd, int exitstatus)
+{
+	if (cmd->av[1])
+			exitstatus = atoi(cmd->av[1]);
+	if (exitstatus == -1 && !cmd->av[1])
+		exitstatus = EXIT_SUCCESS;
+	free(cmd->cmd);
+	free_arry(cmd->av);
+	exit(exitstatus);
+}
