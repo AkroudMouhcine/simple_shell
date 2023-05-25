@@ -19,6 +19,8 @@ void is_exit(cmd_t *cmd, int exitstatus)
 		free_arry(cmd->av);
 		exit(exitstatus);
 	}
+	if (!strcmp(cmd->av[0], "env"))
+		print_env();
 }
 
 
@@ -41,3 +43,20 @@ void get_cmd(cmd_t *cmd)
 	}
 	cmd->cmd[nread - 1] = '\0';
 }
+
+/**
+ * print_env - prints environments
+ *
+ * Return: void
+ */
+void print_env(void)
+{
+	int i;
+
+	for (i = 0; environ[i]; i++)
+	{
+		my_printf(environ[i]);
+		my_printf("\n");
+	}
+}
+
