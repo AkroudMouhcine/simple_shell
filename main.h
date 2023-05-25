@@ -16,9 +16,9 @@
  */
 typedef struct cmd_t
 {
-    char **av;
-    char *cmd;
-    char *name;
+	char **av;
+	char *cmd;
+	char *name;
 } cmd_t;
 
 
@@ -26,5 +26,6 @@ void free_arry(char **ar);
 void my_printf(const char *str);
 void _split(cmd_t *cmd);
 void remove_spaces(char *s);
+void cmd_init(cmd_t *cmd, char *name);
 
 #endif
