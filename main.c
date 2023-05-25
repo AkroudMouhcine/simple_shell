@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
         child_pid = fork();
         if(child_pid == 0)
         {
-            if(execve(cmd.cmd, cmd.av, NULL) == -1)
+            if(execve(cmd.av[0], cmd.av, NULL) == -1)
             {
                 perror(cmd.name);
                 free(cmd.cmd);
