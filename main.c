@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
         if (nread == -1)
         {
             free(cmd.cmd);
-            exit(1);
+            exit(EXIT_SUCCESS);
         }
         cmd.cmd[nread - 1] = '\0';
         cmd.av = malloc(2 * sizeof(char *));
