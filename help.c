@@ -52,8 +52,6 @@ void _split(cmd_t *cmd)
 	}
 	cmd->av[0] = NULL;
 	cmd->av[1] = NULL;
-	remove_spaces(cmd->cmd);
-	comment(cmd->cmd);
 	tkn = strtok(cmd->cmd, " ");
 	while (tkn)
 	{
@@ -114,26 +112,5 @@ void cmd_init(cmd_t *cmd, char *name)
 	cmd->cmd = NULL;
 	cmd->av = NULL;
 	cmd->name = name;
-}
-
-
-/**
- * comment - handel comment.
- * @str: input string.
- *
- * Return: void
- */
-void comment(char * str)
-{
-	int i;
-
-	for (i = 0; str[i] != '\0'; i++)
-	{
-		if (str[i] == '#')
-		{
-			str[i] = '\0';
-			break;
-		}
-	}
 }
 

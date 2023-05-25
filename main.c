@@ -24,9 +24,9 @@ int main(int argc, char *argv[])
 			my_printf("#cisfun$ ");
 		get_cmd(&cmd);
 		_split(&cmd);
-		if (!built_in(&cmd, exitstatus))
+		if (strlen(cmd.cmd) != 0)
 		{
-			if (strlen(cmd.cmd) != 0)
+			if (!built_in(&cmd, exitstatus))
 			{
 				child_pid = fork();
 				if (child_pid == 0)

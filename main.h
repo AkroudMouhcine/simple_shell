@@ -34,6 +34,6 @@ void get_cmd(cmd_t *cmd);
 int built_in(cmd_t *cmd, int exitstatus);
 void print_env(void);
 void my_exit(cmd_t *cmd, int exitstatus);
-void comment(char * str);
+void comment(char *str);
 
 #endif

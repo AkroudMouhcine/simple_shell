@@ -39,6 +39,8 @@ void get_cmd(cmd_t *cmd)
 		exit(EXIT_SUCCESS);
 	}
 	cmd->cmd[nread - 1] = '\0';
+	comment(cmd->cmd);
+	remove_spaces(cmd->cmd);
 }
 
 /**
@@ -61,16 +63,38 @@ void print_env(void)
 
 /**
  * my_exit - exit
- *
+ * @cmd: input cmd_t
+ * @exitstatus: input int
  * Return: void
  */
 void my_exit(cmd_t *cmd, int exitstatus)
 {
 	if (cmd->av[1])
-			exitstatus = atoi(cmd->av[1]);
+		exitstatus = atoi(cmd->av[1]);
 	if (exitstatus == -1 && !cmd->av[1])
 		exitstatus = EXIT_SUCCESS;
 	free(cmd->cmd);
 	free_arry(cmd->av);
 	exit(exitstatus);
+}
+
+
+/**
+ * comment - handel comment.
+ * @str: input string.
+ *
+ * Return: void
+ */
+void comment(char *str)
+{
+	int i;
+
+	for (i = 0; str[i] != '\0'; i++)
+	{
+		if (str[i] == '#')
+		{
+			str[i] = '\0';
+			break;
+		}
+	}
 }
