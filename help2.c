@@ -18,6 +18,11 @@ int built_in(cmd_t *cmd, int exitstatus)
 		print_env();
 		return (1);
 	}
+	else if (!strcmp(cmd->av[0], "setenv") && cmd->av[1])
+	{
+		_setenv(cmd->av[1], cmd->av[2], 1);
+		return (1);
+	}
 	return (0);
 }
 
