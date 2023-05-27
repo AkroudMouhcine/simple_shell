@@ -59,8 +59,6 @@ void print_env(void)
 	}
 }
 
-
-
 /**
  * my_exit - exit
  * @cmd: input cmd_t
@@ -69,8 +67,20 @@ void print_env(void)
  */
 void my_exit(cmd_t *cmd, int exitstatus)
 {
+	const char *err = "./hsh: 1: exit: Illegal number: ";
+
 	if (cmd->av[1])
-		exitstatus = atoi(cmd->av[1]);
+	{
+		if (cmd->av[1][0] != '-' && _isanumber(cmd->av[1]))
+			exitstatus = atoi(cmd->av[1]);
+		else
+		{
+			write(STDERR_FILENO, err, strlen(err));
+			write(STDERR_FILENO, cmd->av[1], strlen(cmd->av[1]));
+			write(STDERR_FILENO, "\n", 1);
+			exitstatus = 2;
+		}
+	}
 	if (exitstatus == -1 && !cmd->av[1])
 		exitstatus = EXIT_SUCCESS;
 	free(cmd->cmd);

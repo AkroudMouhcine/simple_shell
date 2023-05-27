@@ -8,7 +8,6 @@
  *
  * Return: void
  */
-
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 {
 	static char buffer[BUFFER_SIZE];
@@ -51,4 +50,19 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 	}
 	*lineptr = line;
 	return (line_length == 0 ? -1 : (ssize_t)line_length);
+}
+/**
+ * _isanumber - check if number
+ * @str: strings to be checked
+ * Return: 0 or 1
+ */
+int _isanumber(char *str)
+{
+	while (*str)
+	{
+		if (*str < '0' || *str > '9')
+			return (0);
+		str++;
+	}
+	return (1);
 }
