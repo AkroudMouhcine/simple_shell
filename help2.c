@@ -32,7 +32,7 @@ void get_cmd(cmd_t *cmd)
 	size_t n = 0;
 	ssize_t nread;
 
-	nread = getline(&cmd->cmd, &n, stdin);
+	nread = _getline(&cmd->cmd, &n, stdin);
 	if (nread == -1)
 	{
 		free(cmd->cmd);

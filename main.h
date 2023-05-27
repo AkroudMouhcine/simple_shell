@@ -9,6 +9,7 @@
 #include <string.h>
 #include <stddef.h>
 
+#define BUFFER_SIZE 1024
 extern char **environ;
 
 /**
@@ -35,5 +36,6 @@ int built_in(cmd_t *cmd, int exitstatus);
 void print_env(void);
 void my_exit(cmd_t *cmd, int exitstatus);
 void comment(char *str);
+ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
 
 #endif
