@@ -12,14 +12,14 @@ int built_in(cmd_t *cmd, int exitstatus)
 	if (!strcmp(cmd->av[0], "exit"))
 	{
 		my_exit(cmd, exitstatus);
-	} else if (!strcmp(cmd->av[0], "env"))
+	}
+	else if (!strcmp(cmd->av[0], "env"))
 	{
 		print_env();
 		return (1);
 	}
 	return (0);
 }
-
 
 /**
  * get_cmd - get cmd.
@@ -87,7 +87,6 @@ void my_exit(cmd_t *cmd, int exitstatus)
 	free_arry(cmd->av);
 	exit(exitstatus);
 }
-
 
 /**
  * comment - handel comment.
