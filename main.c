@@ -28,6 +28,7 @@ int main(int argc, char *argv[])
 		{
 			if (!built_in(&cmd, exitstatus))
 			{
+				find_path(&cmd);
 				child_pid = fork();
 				if (child_pid == 0)
 				{
