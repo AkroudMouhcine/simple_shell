@@ -20,3 +20,8 @@ void _setenv(char *key, char *value, int overwrite)
 {
 	setenv(key, value, overwrite);
 }
+
+void _unsetenv(char *key)
+{
+	unsetenv(key);
+}

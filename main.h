@@ -40,5 +40,6 @@ void comment(char *str);
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
 int _isanumber(char *str);
 void _setenv(char *key, char *value, int overwrite);
+void _unsetenv(char *key);
 
 #endif
