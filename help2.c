@@ -20,7 +20,8 @@ int built_in(cmd_t *cmd, int exitstatus)
 	}
 	else if (!strcmp(cmd->av[0], "setenv") && cmd->av[1])
 	{
-		_setenv(cmd->av[1], cmd->av[2], 1);
+		if (cmd->av[2])
+			_setenv(cmd->av[1], cmd->av[2], 1);
 		return (1);
 	}
 	else if (!strcmp(cmd->av[0], "unsetenv") && cmd->av[1])
